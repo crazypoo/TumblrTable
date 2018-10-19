@@ -9,10 +9,14 @@
 #import "ViewController.h"
 #import <PooTools/Utils.h>
 #import <PooTools/PMacros.h>
+#import <MJRefresh/MJRefresh.h>
+#import <Masonry/Masonry.h>
+
+#define ShowAdCount 10
+#define CellH 100
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 @property (nonatomic,strong) UITableView *tbView;
-
 @end
 
 @implementation ViewController
@@ -22,9 +26,12 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     
+    __block NSInteger refreshTimes = 0;
+    int delaySecond = 1;
+    
     UIImage *bgImage = kImageNamed(@"DemoImage.png");
 
-    self.tbView    = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    self.tbView    = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     self.tbView.layer.contents = (id)bgImage.CGImage;
     self.tbView.layer.backgroundColor = kClearColor.CGColor;
     self.tbView.dataSource                     = self;
@@ -33,14 +40,29 @@
     self.tbView.showsVerticalScrollIndicator   = NO;
     self.tbView.separatorStyle                 = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.tbView];
+    self.tbView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*delaySecond), dispatch_get_current_queue(), ^{
+            refreshTimes++;
+            [self.tbView.mj_header endRefreshing];
+            if (refreshTimes%3 == 0) {
+                UIImage *bgImage = kImageNamed(@"octocat");
+                self.tbView.layer.contents = (id)bgImage.CGImage;
+                self.tbView.layer.backgroundColor = kClearColor.CGColor;
+            }
+        });
+    }];
+    [self.tbView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.equalTo(self.view);
+    }];
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAlertView:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapTableAdView)];
     tap.cancelsTouchesInView = NO;
     tap.delegate = self;
     [self.tbView addGestureRecognizer:tap];
 }
 
--(void)tapAlertView:(UIGestureRecognizer *)ges
+#pragma mark ---------------> Action
+-(void)tapTableAdView
 {
     [Utils alertShowWithMessage:@"BG"];
 }
@@ -72,7 +94,7 @@ static NSString *cellIdentifier = @"CELL";
     }
     
     if (indexPath.row != 0) {
-        if (indexPath.row%10 == 0) {
+        if (indexPath.row%ShowAdCount == 0) {
             cell.hidden = YES;
         }
     }
@@ -86,16 +108,16 @@ static NSString *cellIdentifier = @"CELL";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row != 0) {
-        if (indexPath.row%10 == 0) {
+        if (indexPath.row%ShowAdCount == 0) {
             return self.view.frame.size.height;
         }
     }
-    return 100;
+    return CellH;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [Utils alertShowWithMessage:@"CELL"];
+    [Utils alertShowWithMessage:[NSString stringWithFormat:@"CELL%ld",(long)indexPath.row]];
 }
 
 #pragma mark ------> UIGestureRecognizerDelegate
