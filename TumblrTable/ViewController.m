@@ -39,7 +39,6 @@
     self.tbView.dataSource                     = self;
     self.tbView.delegate                       = self;
     self.tbView.showsHorizontalScrollIndicator = NO;
-    
     self.tbView.showsVerticalScrollIndicator   = NO;
     self.tbView.separatorStyle                 = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.tbView];
