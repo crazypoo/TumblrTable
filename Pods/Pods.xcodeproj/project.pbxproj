@@ -326,6 +326,7 @@
 		6FDB2F19FF9CF44ABCE94B84237C91F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38755CFBF9EC05DF2B5919C7D4C216F8 /* Foundation.framework */; };
 		7099E4035C06D3116DA2586EFE563C0B /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB576CB28F499EBB7EF688A7A09C663 /* AFAutoPurgingImageCache.m */; };
 		70FB78D28A4402CC236D2B8D5B94A27E /* UIView+LayoutSubviewsCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = F4295EA9C5B35F2E753AF6C8ADD86039 /* UIView+LayoutSubviewsCallback.m */; };
+		712BB15B5151C16FDA9599FA2A28FEBD /* POPVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C75E1EDEE30594DF58C2C10D39FF28C /* POPVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7159E113B4539BBCF5EBFE8B4E7D996F /* SDAnimatedImageRep.h in Headers */ = {isa = PBXBuildFile; fileRef = C9D0FD105666C5474E6F46396F5DEA59 /* SDAnimatedImageRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		71F6D96E3AEAA07389F37E2C4B63C4F6 /* MJRefreshHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 484A3A1F7823A2CE10D7FB1E38C3BDE1 /* MJRefreshHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		723B040816983E86607881C896C1CCA3 /* PBiologyID.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B395D2D63CABD4E95A417CB62AB97F2 /* PBiologyID.m */; };
@@ -665,7 +666,6 @@
 		EB354FC539D575E61D718A8D447F005C /* UITextField+Shake.m in Sources */ = {isa = PBXBuildFile; fileRef = 72C1A5A4C23289182626E9F8E418EEBB /* UITextField+Shake.m */; };
 		EBEB72F80DCD10DEB82BF5F856D467FD /* MJRefreshConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 14228F4B97C476467D1B522B80B69DB6 /* MJRefreshConst.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC1EBC4A70AC9BE43A40EB34001F2E8B /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A550B7E6DFDA795879A6F4D8EBCA35 /* NSValueTransformer+MTLInversionAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		ECE948E96469B08E8CD13788744C77F7 /* POPVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C75E1EDEE30594DF58C2C10D39FF28C /* POPVector.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		EE2BB526B62CB93DCD608EFBDC9FD6AB /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4790B0673EABADB98E98116A2D4FAA27 /* FMDB.framework */; };
 		EE44351F11ED90F904FFCB257094967F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F33994E17DB1FACCD43A42AF0C4C7DD /* UIKit.framework */; };
 		EE4D53012490D288F17E1E34ED7EB203 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38755CFBF9EC05DF2B5919C7D4C216F8 /* Foundation.framework */; };
@@ -3658,7 +3658,7 @@
 				1A5CD9D58A3A9B65B09C6492FC9128F2 /* POPSpringAnimation.h in Headers */,
 				325F043870C4768A76401907BBF657A8 /* POPSpringAnimationInternal.h in Headers */,
 				A3070FB139C2D830A6CEB024BCE190EE /* POPSpringSolver.h in Headers */,
-				ECE948E96469B08E8CD13788744C77F7 /* POPVector.h in Headers */,
+				712BB15B5151C16FDA9599FA2A28FEBD /* POPVector.h in Headers */,
 				3A800287FBB1499A180B1413CA7868EA /* TransformationMatrix.h in Headers */,
 				5884F649D330BBDE7A170F1FD4F6A34D /* UnitBezier.h in Headers */,
 			);
